@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Product, Category, Face, Architect
 from django.contrib import messages
-
+#from django.contrib.auth import authenticate, login, logout
 
 
 def product(request, pk):
@@ -60,3 +60,42 @@ def architects(request):
     architects = Architect.objects.all()
     architects = architects.filter(checked=True)
     return render(request, 'architects.html', {'architects':architects})
+
+
+def registerArchitect(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        password = request.POST['password']
+        qualification = request.POST['qualification']
+        positions = request.POST['positions']
+        experience = request.POST['experience']
+        email = request.POST['email']
+        phone = request.POST['phone']
+        city = request.POST['city']
+        architect = Architect(name=name, password=password, qualification=qualification, positions=positions, experience=experience, email=email, phone=phone, city=city)
+        architect.save()
+        return redirect('home')
+    else:
+        return render(request, 'register.html', {})
+
+
+# def loginArchitect(request):
+#     if request.method == "POST":
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#             login(request, user)
+#             messages.success(request, ("You Have Been Logged In!"))
+#             return redirect('home')
+#         else:
+#             messages.success(request, ("There was an error, please try again..."))
+#             return redirect('login')
+
+#     else:
+#         return render(request, 'login.html', {})
+
+# def logoutArchitect(request):
+#     logout(request)
+#     return redirect('home')
+

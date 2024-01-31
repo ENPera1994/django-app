@@ -23,14 +23,10 @@
                         
                         <div class="col mb-5">
                             <div class="card h-100">
-                                <!-- Product image-->
-                                <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                                <br>
-                                <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <br>
-                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'product' product.id %}">Ver Plano</a></div>
-                                </div>
+                                <!-- Product image as a link -->
+                                <a href="{% url 'product' product.id %}">
+                                    <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
+                                </a>  
                             </div>
                         </div>
 
@@ -44,36 +40,45 @@
         </section>
         <!-- Section-->
         <section class="py-5">
-            
             <div class="container px-4 px-lg-5 mt-5">
                 <p> Precio $0 </p>
                     
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     
                     {% for face in faces %}
-
+        
                         <div class="col mb-5">
-                            <div class="card h-100">
+        
+                            <div class="card h-100 position-relative">
                                 <!-- Product image-->
                                 <img class="card-img-top" src="{{ face.image.url }}" alt="..." />
-                                <br>
+                                
+                                <!-- Favorite icon -->
+                                <button class="btn btn-link position-absolute top-0 end-0 m-2" id="addToFavorites" value="{{ face.id }}">
+                                    {% if face.favorito %}
+                                        <i class="fas fa-heart text-danger"></i> <!-- Cambia a rojo si es favorito -->
+                                    {% else %}
+                                        <i class="far fa-heart"></i>
+                                    {% endif %}
+                                </button>
+        
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <br>
-                                    <button value="{{ face.id }}" class="btn btn-secondary" id="addCart"> Agregar al carrito </button>
+                                    <button class="btn btn-secondary" id="addCart" value="{{ face.id }}"> Agregar al carrito </button>
                                 </div>
                             </div>
                         </div>
                         
                     {% endfor %}
                     <br>
-
+        
                     <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{% url 'fachadas' %}">Ver todas las Fachadas</a></div>
                     
                 </div>
-
             </div>
         </section>
+        
         <!-- Section-->
         <section class="py-5">
             

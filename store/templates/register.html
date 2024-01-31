@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Header-->
+       <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Crea tu cuenta</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <center>
+                    <div class="col-8">
+                        <br><br><br><br><br>
+                        <form method="POST" action="{% url 'register' %}">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre">
+                            </div>
+                            <br><br>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="qualification" placeholder="Ingrese su titulo">
+                            </div>
+                            <br><br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="positions" placeholder="Ingrese los cargos que ah tenido">
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="experience" placeholder="Ingrese años de experiencia en el campo">
+                            </div>
+                            <br><br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="email" placeholder="Ingrese su mail">
+                            </div>
+                            <br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="phone" placeholder="Ingrese su numero de telefono">
+                            </div>
+                            <br><br>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="city" placeholder="Ingrese Ciudad y Provincia en la que vive">
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary">Crear cuenta</button>
+                        </form>
+                        <br><br><br><br><br>
+                    </div>
+                </center>
+            </div>
+        </div>
+
+{% endblock %}

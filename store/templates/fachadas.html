@@ -23,14 +23,23 @@
                     {% for face in faces %}
 
                         <div class="col mb-5">
-                            <div class="card h-100">
+                            <div class="card h-100 position-relative">
                                 <!-- Product image-->
                                 <img class="card-img-top" src="{{ face.image.url }}" alt="..." />
-                                <br>
+                                
+                                <!-- Favorite icon -->
+                                <button class="btn btn-link position-absolute top-0 end-0 m-2" id="addToFavorites" value="{{ face.id }}">
+                                    {% if face.favorito %}
+                                        <i class="fas fa-heart text-danger"></i> <!-- Cambia a rojo si es favorito -->
+                                    {% else %}
+                                        <i class="far fa-heart"></i>
+                                    {% endif %}
+                                </button>
+        
                                 <!-- Product actions-->
                                 <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                     <br>
-                                    <button value="{{ face.id }}" class="btn btn-secondary" id="addCart"> Agregar al carrito </button>
+                                    <button class="btn btn-secondary" id="addCart" value="{{ face.id }}"> Agregar al carrito </button>
                                 </div>
                             </div>
                         </div>
