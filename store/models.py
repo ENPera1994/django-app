@@ -13,7 +13,7 @@ class Customer(models.Model):
     lastName = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
     phone = models.CharField(max_length=20)
-    password = models.CharField(max_length=50)
+    #password = models.CharField(max_length=50)
 
     def __str__(self):
         return f'{self.firstName} {self.lastName}'
@@ -55,13 +55,13 @@ class Order(models.Model):
         return f'{self.customer} {self.product}'
     
 class Architect(models.Model):
-    firstName = models.CharField(max_length=50)
-    lastName = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    qualification = models.CharField(max_length=100, blank=True, null=True)
+    positions = models.CharField(max_length=100, blank=True, null=True)
+    experience = models.CharField(max_length=100, blank=True, null=True)
     email = models.EmailField(max_length=50)
     phone = models.CharField(max_length=20)
     city = models.CharField(max_length=50)
-    province = models.CharField(max_length=50, blank=True, null=True) 
-    country = models.CharField(max_length=50, blank=True, null=True)
     password = models.CharField(max_length=50)
     image = models.ImageField(upload_to='uploads/product/', blank=True, null=True)
 
