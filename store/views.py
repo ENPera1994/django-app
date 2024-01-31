@@ -11,7 +11,8 @@ def product(request, pk):
 
 def home(request):
     products = Product.objects.all()[:4]
-    faces = Face.objects.all()[:3]
+    faces = Face.objects.all()[:4]
+    architects = Architect.objects.all()[:4]
     return render(request, 'home.html', {'products':products, 'faces':faces,})
 
 

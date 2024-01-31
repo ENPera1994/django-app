@@ -64,6 +64,7 @@ class Architect(models.Model):
     city = models.CharField(max_length=50)
     password = models.CharField(max_length=50)
     image = models.ImageField(upload_to='uploads/product/', blank=True, null=True)
+    checked = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.firstName} {self.lastName}'
