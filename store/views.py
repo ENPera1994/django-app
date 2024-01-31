@@ -13,7 +13,7 @@ def home(request):
     products = Product.objects.all()[:4]
     faces = Face.objects.all()[:4]
     architects = Architect.objects.all()[:4]
-    return render(request, 'home.html', {'products':products, 'faces':faces,})
+    return render(request, 'home.html', {'products':products, 'faces':faces, 'architects':architects})
 
 
 def about(request):
@@ -56,6 +56,7 @@ def fachadas(request):
     categories = Category.objects.all()
     return render(request, 'fachadas.html', {'faces':faces, 'categories': categories})
 
-def architects(request, pk):
+def architects(request):
     architects = Architect.objects.all()
-    return render(request, 'architecs.html', {'architects':architects})
+    architects = architects.filter(checked=True)
+    return render(request, 'architects.html', {'architects':architects})
