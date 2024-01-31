@@ -7,7 +7,6 @@ from django.contrib import messages
 #import mercadopago
 
 
-
 def cartSummary(request):
     cart = Cart(request)
     cartProducts = cart.getProds
@@ -37,6 +36,7 @@ def cartAdd(request):
         response = JsonResponse({'qty': cartQuantity})
         messages.success(request, ("Agregado al Carrito"))
         return response
+    
 
 def cartDelete(request):
     cart = Cart(request)
