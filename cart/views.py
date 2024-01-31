@@ -4,7 +4,7 @@ from .cart import Cart
 from store.models import Product
 from django.http import JsonResponse
 from django.contrib import messages
-import mercadopago
+#import mercadopago
 
 
 
