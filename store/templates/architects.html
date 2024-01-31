@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-1">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Plano Ya</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Elegi tu casa ideal <br> paga como mas te convenga <br> contacta con el mejor arquitecto para tu proyecto <br> todo a un solo unos clics de distancia</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- listar_arquitectos.html -->
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
+
+                    {% for architect in {% extends 'base.html' %}
+    
+{% block content %}
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-1">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Plano Ya</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">Elegi tu casa ideal <br> paga como mas te convenga <br> contacta con el mejor arquitecto para tu proyecto <br> todo a un solo unos clics de distancia</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- listar_fachadas.html -->
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                    
+
+                    {% for architect in architects %}
+
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Architect image-->
+                                <img class="card-img-top" src="{{ architect.image.url }}" alt="..." />
+                                <br>
+                                <p class="card-text"> Nombre: {{architect.lastName}}, {{ architect.firstName }} </p>
+                                <p class="card-text"> Mail: {{architect.email}}</p>
+                                <p class="card-text"> Ciudad: {{architect.city}}</p>
+                                
+                            </div>
+                        </div>
+                        
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </section>
+        <script>
+            // Check if botton pressed
+            $(document).on('click', '#addCart', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "cartAdd" %}',
+                    data: {
+                        productId: $('#addCart').val(),
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        action: 'post'
+                    },
+        
+                    success: function(json){
+                        //console.log(json)
+                        document.getElementById('cartquantity').textContent = json.qty
+                        location.reload();
+                    },
+        
+                    error: function(hhr, errmsg, err){
+                        
+                    }
+        
+                });
+        
+            })
+        </script>   
+{% endblock %} %}
+
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <!-- Product image-->
+                                <img class="card-img-top" src="{{ face.image.url }}" alt="..." />
+                                <br>
+                                <!-- Product actions-->
+                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                    <br>
+                                    <button value="{{ face.id }}" class="btn btn-secondary" id="addCart"> Agregar al carrito </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </section>
+        <script>
+            // Check if botton pressed
+            $(document).on('click', '#addCart', function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "cartAdd" %}',
+                    data: {
+                        productId: $('#addCart').val(),
+                        csrfmiddlewaretoken: '{{ csrf_token }}',
+                        action: 'post'
+                    },
+        
+                    success: function(json){
+                        //console.log(json)
+                        document.getElementById('cartquantity').textContent = json.qty
+                        location.reload();
+                    },
+        
+                    error: function(hhr, errmsg, err){
+                        
+                    }
+        
+                });
+        
+            })
+        </script>   
+{% endblock %}

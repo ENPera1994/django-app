@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+    
+{% block content %}
+
+        <!-- Header-->
+        <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-1">
+                <div class="text-center text-white">
+                    <h1 class="display-5 fw-bolder">Carrito</h1>
+                </div>
+            </div>
+        </header>
+
+        <br>
+
+        <div class="container">
+
+            {% if cartProducts %}
+
+                {% for product in cartProducts %}
+                    
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ product.image.url }}" class="img-fluid rounded-start" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    
+                                    <p class="card-text"> Are: {{product.dimension}} m2</p>
+                                    <p class="card-text"> Cantidad de habitaciones: {{product.cantRoom}}</p>
+                                    <p class="card-text"> Cantidad de pisos: {{product.cantFloor}}</p>
+                                    <p class="card-text"> Categoria: {{product.category}}</p>
+                
+                                    
+                                    <button type="button" data-index="{{ product.id }}" class="btn btn-danger deleteProduct"> Eliminar del carrito </button>
+                                    
+                                    <br>
+                                    
+                
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                {% endfor %}
+                <br>
+                <h3>Total: ${{ totals }}</h3>
+            {% else %}
+                <br><br><br>
+                No hay ningun producto agregado
+            {% endif %}
+        </div>
+        <div class="text-center">
+            <a href="#!" class="btn btn-primary" >Comprar</a>
+        </div>
+        
+        
+        <br><br><br><br><br><br><br>
+
+<script>
+// Delete Item From Cart
+$(document).on('click', '.deleteProduct', function(e){
+    e.preventDefault();
+
+    $.ajax({
+    type: 'POST',
+    url: '{% url "cartDelete" %}',
+    data: {
+      productId: $(this).data('index'),
+      csrfmiddlewaretoken: '{{ csrf_token }}',
+      action: 'post'
+    },
+    success: function(json){
+        location.reload();
+    },
+
+    error: function(xhr, errmsg, err){
+
+    }
+
+
+    });
+
+})
+
+</script>
+
+{% endblock %}
