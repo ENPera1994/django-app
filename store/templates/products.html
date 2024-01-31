@@ -2,18 +2,29 @@
     
 {% block content %}
 
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-1">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Plano Ya</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Elegi tu casa ideal <br> paga como mas te convenga <br> contacta con el mejor arquitecto para tu proyecto <br> todo a un solo unos clics de distancia</p>
-                </div>
-            </div>
-        </header>
 
         <!-- listar_planos.html -->
         <form method="get" action="{% url 'products' %}">  
+            
+            <label for="ancho_terreno">Ancho del terreno:</label>
+            
+            <label for="metros_cuadrados">Metros cuadrados:</label>
+
+            <label for="dormitorios">Dormitorios:</label>
+            
+            <label for="pisos">Pisos:</label>
+            
+
+            <br>
+            <input type="number" name="ancho_terreno">
+            <input type="number" name="metros_cuadrados">
+            <input type="number" name="dormitorios">
+            <input type="number" name="pisos">
+
+            <input type="submit" value="Filtrar">
+            
+            <br>
+
             <label for="categoria">Categoría:</label>
             <select name="categoria">
                 <option value="">Todas</option>
@@ -21,22 +32,7 @@
                     <option value="{{ category.id }}">{{ category.name }}</option>
                 {% endfor %}
             </select>
-    
-            
-            
-            <label for="ancho_terreno">Ancho del terreno:</label>
-            <input type="number" name="ancho_terreno">
 
-            <label for="metros_cuadrados">Metros cuadrados:</label>
-            <input type="number" name="metros_cuadrados">
-
-            <label for="dormitorios">Dormitorios:</label>
-            <input type="number" name="dormitorios">
-
-            <label for="pisos">Pisos:</label>
-            <input type="number" name="pisos">
-
-            <input type="submit" value="Filtrar">
         </form>
 
         <!-- Section-->
