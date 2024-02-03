@@ -33,10 +33,49 @@ def products(request):
         products = products.filter(category=categoria_filtro)
     
     if ancho_terreno_filtro:
-        products = products.filter(width=int(ancho_terreno_filtro))
+        if ancho_terreno_filtro == '1':
+            products = products.filter(width__range=(0, 10))
+        elif ancho_terreno_filtro == '2':
+            products = products.filter(width__range=(10, 20))
+        elif ancho_terreno_filtro == '3':
+            products = products.filter(width__range=(20, 30))
+        elif ancho_terreno_filtro == '4':
+            products = products.filter(width__range=(30, 40))
+        elif ancho_terreno_filtro == '5':
+            products = products.filter(width__range=(40, 50))
+        elif ancho_terreno_filtro == '6':
+            products = products.filter(width__range=(50, 60))
+        elif ancho_terreno_filtro == '7':
+            products = products.filter(width__range=(60, 70))
+        elif ancho_terreno_filtro == '8':
+            products = products.filter(width__range=(70, 80))
+        elif ancho_terreno_filtro == '9':
+            products = products.filter(width__range=(80, 90))
+        elif ancho_terreno_filtro == '10':
+            products = products.filter(width__range=(90, 100))
 
     if metros_cuadrados_filtro:
-        products = products.filter(dimension=int(metros_cuadrados_filtro))
+        if metros_cuadrados_filtro == '1':
+            products = products.filter(dimension__range=(0, 10))
+        elif metros_cuadrados_filtro == '2':
+            products = products.filter(dimension__range=(10, 20))
+        elif metros_cuadrados_filtro == '3':
+            products = products.filter(dimension__range=(20, 30))
+        elif metros_cuadrados_filtro == '4':
+            products = products.filter(dimension__range=(30, 40))
+        elif metros_cuadrados_filtro == '5':
+            products = products.filter(dimension__range=(40, 50))
+        elif metros_cuadrados_filtro == '6':
+            products = products.filter(dimension__range=(50, 60))
+        elif metros_cuadrados_filtro == '7':
+            products = products.filter(dimension__range=(60, 70))
+        elif metros_cuadrados_filtro == '8':
+            products = products.filter(dimension__range=(70, 80))
+        elif metros_cuadrados_filtro == '9':
+            products = products.filter(dimension__range=(80, 90))
+        elif metros_cuadrados_filtro == '10':
+            products = products.filter(dimension__range=(90, 100))
+        # products = products.filter(dimension=int(metros_cuadrados_filtro))
 
     if dormitorios_filtro:
         products = products.filter(cantRoom=int(dormitorios_filtro))

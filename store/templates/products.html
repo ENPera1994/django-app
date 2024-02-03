@@ -13,7 +13,21 @@
                         <div class="text-center mb-2">
                             <p class="mb-1">Ancho del terreno:</p>
                             <i class="fa-solid fa-arrows-left-right-to-line fa-2x"></i>
-                            <input type="number" name="ancho_terreno" class="form-control" placeholder="metros">
+                            <br>
+                            <select name="ancho_terreno">
+                                <option value="">Todas</option>
+                                <option value="1">hasta 10m</option>
+                                <option value="2">entre 10 y 20m</option>
+                                <option value="3">Entre 20 y 30m</option>
+                                <option value="4">Entre 30 y 40m</option>
+                                <option value="5">Entre 40 y 50m</option>
+                                <option value="6">Entre 50 y 60m</option>
+                                <option value="7">Entre 60 y 70m</option>
+                                <option value="8">Entre 70 y 80m</option>
+                                <option value="9">Entre 80 y 90m</option>
+                                <option value="10">Entre 90 y 100m</option>
+                            </select>
+                            
                         </div>
                     </div>
 
@@ -21,7 +35,21 @@
                         <div class="text-center mb-2">
                             <p class="mb-1">Metros cuadrados:</p>
                             <i class="fa-solid fa-maximize fa-2x"></i>
-                            <input type="number" name="metros_cuadrados" class="form-control" placeholder="meros cuadrados">
+                            <br>
+                            <select name="metros_cuadrados">
+                                <option value="">Todas</option>
+                                <option value="1">hasta 10m2</option>
+                                <option value="2">entre 10 y 20m2</option>
+                                <option value="3">Entre 20 y 30m2</option>
+                                <option value="4">Entre 30 y 40m2</option>
+                                <option value="5">Entre 40 y 50m2</option>
+                                <option value="6">Entre 50 y 60m2</option>
+                                <option value="7">Entre 60 y 70m2</option>
+                                <option value="8">Entre 70 y 80m2</option>
+                                <option value="9">Entre 80 y 90m2</option>
+                                <option value="10">Entre 90 y 100m2</option>
+                            </select>
+                            <!-- <input type="number" name="metros_cuadrados" class="form-control" placeholder="meros cuadrados"> -->
                         </div>
                     </div>
             
@@ -30,7 +58,21 @@
                         <div class="text-center mb-2">
                             <p class="mb-1">Dormitorios</p>
                             <i class="fas fa-bed fa-2x"></i>
-                            <input type="number" name="dormitorios" class="form-control" placeholder="cantidad">
+                            <br>
+                            <select name="dormitorios">
+                                <option value="">Todas</option>
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                            </select>
+                            <!-- <input type="number" name="dormitorios" class="form-control" placeholder="cantidad"> -->
                         </div>
                     </div>
             
@@ -39,7 +81,21 @@
                         <div class="text-center mb-2">
                             <p class="mb-1">Pisos</p>
                             <i class="fa-regular fa-building fa-2x"></i>
-                            <input type="number" name="pisos" class="form-control" placeholder="cantidad">
+                            <br>
+                            <select name="pisos">
+                                <option value="">Todas</option>
+                                <option value="1"> 1 </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                                <option value="5"> 5 </option>
+                                <option value="6"> 6 </option>
+                                <option value="7"> 7 </option>
+                                <option value="8"> 8 </option>
+                                <option value="9"> 9 </option>
+                                <option value="10"> 10 </option>
+                            </select>
+                            <!-- <input type="number" name="pisos" class="form-control" placeholder="cantidad"> -->
                         </div>
                     </div>
             
@@ -112,7 +168,12 @@
                                 <!-- Product image as a link -->
                                 <a href="{% url 'product' product.id %}">
                                     <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                                </a>  
+                                </a>
+                                <p class="card-text"> Ancho: {{product.width}} m</p>
+                                <p class="card-text"> Area: {{product.dimension}} m2</p>
+                                <p class="card-text"> Cantidad de habitaciones: {{product.cantRoom}}</p>
+                                <p class="card-text"> Cantidad de pisos: {{product.cantFloor}}</p>
+                                <p class="card-text"> Categoria: {{product.category}}</p> 
                             </div>
                         </div>
                         

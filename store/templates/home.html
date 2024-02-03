@@ -26,7 +26,12 @@
                                 <!-- Product image as a link -->
                                 <a href="{% url 'product' product.id %}">
                                     <img class="card-img-top" src="{{ product.image.url }}" alt="..." />
-                                </a>  
+                                </a> 
+                                <p class="card-text"> Ancho: {{product.width}} m</p>
+                                <p class="card-text"> Area: {{product.dimension}} m2</p>
+                                <p class="card-text"> Cantidad de habitaciones: {{product.cantRoom}}</p>
+                                <p class="card-text"> Cantidad de pisos: {{product.cantFloor}}</p>
+                                <p class="card-text"> Categoria: {{product.category}}</p>    
                             </div>
                         </div>
 
@@ -83,7 +88,6 @@
         <section class="py-5">
             
             <div class="container px-4 px-lg-5 mt-5">
-                <p> Precio $0 </p>
                     
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                     
