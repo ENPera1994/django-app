@@ -3,7 +3,7 @@ import datetime
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-    image = image = models.ImageField(upload_to='uploads/product/', blank=True, null=True)
+    image = models.ImageField(upload_to='uploads/product/', blank=True, null=True)
 
     def __str__(self):
         return self.name

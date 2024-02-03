@@ -5,35 +5,99 @@
 
         <!-- listar_planos.html -->
         <form method="get" action="{% url 'products' %}">  
-            
-            <label for="ancho_terreno">Ancho del terreno:</label>
-            
-            <label for="metros_cuadrados">Metros cuadrados:</label>
-
-            <label for="dormitorios">Dormitorios:</label>
-            
-            <label for="pisos">Pisos:</label>
-            
-
+    
             <br>
-            <input type="number" name="ancho_terreno">
-            <input type="number" name="metros_cuadrados">
-            <input type="number" name="dormitorios">
-            <input type="number" name="pisos">
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-2">
+                        <div class="text-center mb-2">
+                            <p class="mb-1">Ancho del terreno:</p>
+                            <i class="fa-solid fa-arrows-left-right-to-line fa-2x"></i>
+                            <input type="number" name="ancho_terreno" class="form-control" placeholder="metros">
+                        </div>
+                    </div>
 
-            <input type="submit" value="Filtrar">
+                    <div class="col-md-2">
+                        <div class="text-center mb-2">
+                            <p class="mb-1">Metros cuadrados:</p>
+                            <i class="fa-solid fa-maximize fa-2x"></i>
+                            <input type="number" name="metros_cuadrados" class="form-control" placeholder="meros cuadrados">
+                        </div>
+                    </div>
+            
+            
+                    <div class="col-md-2">
+                        <div class="text-center mb-2">
+                            <p class="mb-1">Dormitorios</p>
+                            <i class="fas fa-bed fa-2x"></i>
+                            <input type="number" name="dormitorios" class="form-control" placeholder="cantidad">
+                        </div>
+                    </div>
+            
+                    
+                    <div class="col-md-2">
+                        <div class="text-center mb-2">
+                            <p class="mb-1">Pisos</p>
+                            <i class="fa-regular fa-building fa-2x"></i>
+                            <input type="number" name="pisos" class="form-control" placeholder="cantidad">
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
             
             <br>
+            
+            <div class="text-center mt-3">
+                <input type="submit" class="btn btn-primary" value="Filtrar">
+            </div>
+            <br>
 
-            <label for="categoria">Categoría:</label>
-            <select name="categoria">
-                <option value="">Todas</option>
-                {% for category in categories %}
-                    <option value="{{ category.id }}">{{ category.name }}</option>
-                {% endfor %}
-            </select>
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    {% for category in categories %}
+                        <div class="col-md-1">
+                            <div class="text-center mb-1">
+                                <p class="mb-1">{{ category.name }}</p>
+                                {% if category.name == "CASA" %}
+                                    <i class="fa-solid fa-house-chimney fa-2x"></i>
+                                {% elif category.name == "DUPLEX" %}
+                                    <i class="fa-solid fa-building fa-2x"></i>
+                                
+                                {% elif category.name == "TRIPLEX" %}
+                                    <i class="fa-solid fa-tree-city fa-2x"></i>
+                                
+                                {% elif category.name == "MANSION" %}
+                                    <i class="fa-solid fa-city fa-2x"></i>
+                                
+                                {% elif category.name == "CHALET" %}
+                                    <i class="fa-solid fa-building-wheat fa-2x"></i>
+                                
+                                {% elif category.name == "CABAÑA" %}
+                                    <i class="fa-solid fa-house-chimney-window fa-2x"></i>
+                                
+                                {% elif category.name == "PEQUEÑA" %}
+                                    <i class="fa-solid fa-tent fa-2x"></i>
+                                
+                                {% elif category.name == "ESQUINA" %}
+                                    <i class="fa-solid fa-arrow-right-to-city fa-2x"></i>
+                                
+                                {% elif category.name == "EDIFICIO" %}
+                                    <i class="fa-solid fa-hotel fa-2x"></i>
+                                {% endif %}
+                                <br>
+                                <!--<input type="button" name="categoria" value="{{ category.id }}">-->
+                                <button type="button" class="btn btn-primary" onclick="redirectToCategory('{{ category.id }}')"></button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
+            
 
         </form>
+        
 
         <!-- Section-->
         <section class="py-5">
@@ -58,5 +122,11 @@
                 </div>
             </div>
         </section>
-       
+
+        <script>
+            function redirectToCategory(categoryId) {
+                window.location.href = '/products/?categoria=' + categoryId;
+            }
+        </script>
+
 {% endblock %}

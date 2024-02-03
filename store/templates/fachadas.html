@@ -3,16 +3,46 @@
 {% block content %}
 
         <!-- listar_fachadas.html -->
-        <form method="get" action="{% url 'fachadas' %}">  
-            <label for="categoria">Categoría:</label>
-            <select name="categoria">
-                <option value="">Todas</option>
+        <div class="container mt-4">
+            <div class="row justify-content-center">
                 {% for category in categories %}
-                    <option value="{{ category.id }}">{{ category.name }}</option>
+                    <div class="col-md-1">
+                        <div class="text-center mb-1">
+                            <p class="mb-1">{{ category.name }}</p>
+                            {% if category.name == "CASA" %}
+                                <i class="fa-solid fa-house-chimney fa-2x"></i>
+                            {% elif category.name == "DUPLEX" %}
+                                <i class="fa-solid fa-building fa-2x"></i>
+                            
+                            {% elif category.name == "TRIPLEX" %}
+                                <i class="fa-solid fa-tree-city fa-2x"></i>
+                            
+                            {% elif category.name == "MANSION" %}
+                                <i class="fa-solid fa-city fa-2x"></i>
+                            
+                            {% elif category.name == "CHALET" %}
+                                <i class="fa-solid fa-building-wheat fa-2x"></i>
+                            
+                            {% elif category.name == "CABAÑA" %}
+                                <i class="fa-solid fa-house-chimney-window fa-2x"></i>
+                            
+                            {% elif category.name == "PEQUEÑA" %}
+                                <i class="fa-solid fa-tent fa-2x"></i>
+                            
+                            {% elif category.name == "ESQUINA" %}
+                                <i class="fa-solid fa-arrow-right-to-city fa-2x"></i>
+                            
+                            {% elif category.name == "EDIFICIO" %}
+                                <i class="fa-solid fa-hotel fa-2x"></i>
+                            {% endif %}
+                            <br>
+                            <!--<input type="button" name="categoria" value="{{ category.id }}">-->
+                            <button type="button" class="btn btn-primary" onclick="redirectToCategory('{{ category.id }}')"></button>
+                        </div>
+                    </div>
                 {% endfor %}
-            </select>
-            <input type="submit" value="Filtrar">
-        </form>
+            </div>
+        </div>
 
         <!-- Section-->
         <section class="py-5">
@@ -37,10 +67,7 @@
                                 </button>
         
                                 <!-- Product actions-->
-                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                    <br>
-                                    <button class="btn btn-secondary" id="addCart" value="{{ face.id }}"> Agregar al carrito </button>
-                                </div>
+                                
                             </div>
                         </div>
                         
@@ -50,31 +77,12 @@
                 </div>
             </div>
         </section>
+
+
         <script>
-            // Check if botton pressed
-            $(document).on('click', '#addCart', function(e){
-                e.preventDefault();
-                $.ajax({
-                    type: 'POST',
-                    url: '{% url "cartAdd" %}',
-                    data: {
-                        productId: $('#addCart').val(),
-                        csrfmiddlewaretoken: '{{ csrf_token }}',
-                        action: 'post'
-                    },
-        
-                    success: function(json){
-                        //console.log(json)
-                        document.getElementById('cartquantity').textContent = json.qty
-                        location.reload();
-                    },
-        
-                    error: function(hhr, errmsg, err){
-                        
-                    }
-        
-                });
-        
-            })
-        </script>   
+            function redirectToCategory(categoryId) {
+                window.location.href = '/fachadas/?categoria=' + categoryId;
+            }
+        </script>
+
 {% endblock %}
