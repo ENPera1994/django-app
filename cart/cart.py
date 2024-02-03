@@ -34,7 +34,6 @@ class Cart():
         
         for product in products:
             total = total + product.price
-        
         return total
 
     def __len__(self):
